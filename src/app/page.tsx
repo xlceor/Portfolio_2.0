@@ -1,3 +1,7 @@
+"use client";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+
 import Image from "next/image";
 import Card from "@/app/card";
 import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaPython } from "react-icons/fa";
@@ -28,6 +32,37 @@ export const GradientSvgIcon: React.FC<IconProps> = ({ Icon }) => (
 );
 
 export default function Home() {
+  const form = useRef<HTMLFormElement>(null);
+  const [sent, setSent] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    emailjs
+    .sendForm(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      form.current!,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(() => {
+      setSent(true);
+      setToast({ message: "Mensaje enviado con éxito. Gracias por contactarme ✨", type: "success" });
+      form.current?.reset();
+    
+      // Ocultar el toast después de 3 segundos
+      setTimeout(() => setToast(null), 3000);
+    })
+    .catch((error) => {
+      console.error("Error enviando mensaje:", error);
+      setToast({ message: "Hubo un error al enviar el mensaje 😥", type: "error" });
+      setTimeout(() => setToast(null), 3000);
+    });
+  };
+
   
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen  pb-20 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
@@ -40,9 +75,9 @@ export default function Home() {
             Aprendiz de <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600">todo</span> , Maestro en <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">descomponer</span>  cosas... Pero <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-blue-500">repararlas</span> 
           </div>
           <div className="flex p-4 gap-3">
-            <button className="p-3 font-bold bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600 rounded">Ver proyectos</button>
-            <button className="p-3 rounded bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">Descargar CV</button>
-            <button className="p-3 rounded bg-gradient-to-br from-cyan-600 to-blue-500 ">Contactarme</button>
+            <button onClick={() => document.getElementById("proyects")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer font-bold bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600 rounded">Ver proyectos</button>
+            <button className="p-3 cursor-pointer rounded bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">Descargar CV</button>
+            <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer rounded bg-gradient-to-br from-cyan-600 to-blue-500 ">Contactarme</button>
           </div>
       </div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -74,7 +109,7 @@ export default function Home() {
               </div>
           </div>
         </div>
-        <div className="flex flex-col  w-full min-h-[70dvh] h-full items-center">
+        <div id="proyects" className="flex flex-col  w-full min-h-[70dvh] h-full items-center">
         <span className='shadow-[0_0_1000px_50px_rgba(45,45,252,0.6)] -z-50 h-0 w-1/3 mt-[60px]'></span>
           <div className="font-extrabold text-6xl pb-5 text-transparent bg-clip-text bg-gradient-to-br tracking-wide  from-cyan-600 to-blue-500">Portfolio</div>
           <div className="grid grid-cols-3 p-5 gap-3 h-full w-full justify-center">
@@ -129,54 +164,35 @@ export default function Home() {
     </div>
   </div>
 </div>
+
+{/* Contacto */}
+<div id="contact" className="w-full min-h-[70dvh] flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 via-gray-950 to-black py-12 px-6 text-white">
+      <span className='shadow-[0_0_1000px_50px_rgba(0,255,255,0.4)] z-50 h-0 w-1/3 mt-[30px] absolute'></span>
+      <span className='shadow-[0_0_1000px_50px_rgba(0,255,255,0.4)] z-50 h-0 w-1/3 mt-[40px]'></span>
+
+      <div className="text-6xl font-extrabold mb-10 tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600">
+        Contáctame
+      </div>
+      <form ref={form} onSubmit={sendEmail} className="w-full max-w-xl flex flex-col gap-5 bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-white/10 shadow-lg">
+        <input type="text" name="user_name" placeholder="Nombre" required className="w-full px-4 py-3 rounded bg-gray-900 border border-white/10 text-white focus:outline-none"/>
+        <input type="email" name="user_email" placeholder="Correo" required className="w-full px-4 py-3 rounded bg-gray-900 border border-white/10 text-white focus:outline-none"/>
+        <textarea name="message" rows={5} placeholder="Mensaje" required className="w-full px-4 py-3 rounded bg-gray-900 border border-white/10 text-white focus:outline-none"/>
+        <button type="submit" className="bg-gradient-to-br from-cyan-600 via-blue-500 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white font-semibold py-3 rounded transition-transform hover:scale-105">
+          {sent ? "¡Enviado con éxito! ✔️" : "Enviar mensaje"}
+        </button>
+      </form>
+    </div>
+
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {toast && (
+  <div
+    className={`fixed top-5 right-5 z-50 px-4 py-3 rounded shadow-lg text-white
+      ${toast.type === "success" ? "bg-green-500" : "bg-red-500"}`}
+  >
+    {toast.message}
+  </div>
+)}
     </div>
   );
+  
 }
