@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.bg-animated {
+  background: linear-gradient(135deg, #00ff00, #ff0000, #2d2dfc, #00ff00);
+  background-size: 400% 400%;
+  animation: moveGradient 20s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.shadow-animated {
+  box-shadow: 0 0 1000px 50px rgba(0, 255, 0, 0.5);
+  animation: moveShadow 20s linear infinite;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes moveShadow {
+  0% {
+    box-shadow: 0 0 1000px 50px rgba(0, 255, 0, 0.5); /* #00ff00 */
+  }
+  14.28% {
+    box-shadow: 0 0 1000px 50px rgba(255, 0, 0, 0.5); /* #ff0000 */
+  }
+  28.56% {
+    box-shadow: 0 0 1000px 50px rgba(45, 45, 252, 0.5); /* #2d2dfc */
+  }
+  42.84% {
+    box-shadow: 0 0 1000px 50px rgba(0, 255, 0, 0.5); /* #00ff00 */
+  }
+  57.12% {
+    box-shadow: 0 0 1000px 50px rgba(45, 45, 252, 0.5); /* #2d2dfc */
+  }
+  71.4% {
+    box-shadow: 0 0 1000px 50px rgba(255, 0, 0, 0.5); /* #ff0000 */
+  }
+  85.68%, 100% {
+    box-shadow: 0 0 1000px 50px rgba(0, 255, 0, 0.5); /* #00ff00 */
+  }
 }
