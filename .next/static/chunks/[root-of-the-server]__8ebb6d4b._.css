@@ -487,6 +487,10 @@
     bottom: calc(var(--spacing) * 5);
   }
 
+  .-left-0 {
+    left: calc(var(--spacing) * 0);
+  }
+
   .-left-1 {
     left: calc(var(--spacing) * -1);
   }
@@ -917,6 +921,10 @@
 
   .rounded-2xl {
     border-radius: var(--radius-2xl);
+  }
+
+  .rounded-full {
+    border-radius: 3.40282e38px;
   }
 
   .rounded-lg {

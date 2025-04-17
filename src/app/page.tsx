@@ -97,13 +97,13 @@ export default function Home() {
           <div className=" font-extrabold text-6xl pb-8 p-0 text-transparent bg-clip-text bg-gradient-to-br from-orange-600 tracking-wide   via-red-500 to-rose-700">Sobre mi</div>
           <div className="flex justify-between items-center flex-col md:flex-row w-full h-full ">
             <div className="flex w-2/3  min-h-[40dvh] p-3 h-full justify-center items-center">
-            <div className="w-[22rem] rounded h-[23rem] relative bg-gradient-to-br from-orange-600  via-red-500 to-rose-700 min-h-[40dvh]">
+            <div className="w-[22rem] rounded-full h-[23rem] relative bg-gradient-to-br from-orange-600  via-red-500 to-rose-700 min-h-[40dvh]">
               <Image
                 src="/yo.png"
                 alt="File icon"
                 width={500}
                 height={500}
-                className="absolute -left-1 -bottom-0 rounded"
+                className="absolute left-0 -bottom-0 rounded-full"
               />
             </div>
             </div>
