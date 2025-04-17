@@ -80,7 +80,14 @@ export default function Home() {
           </div>
           <div className="flex p-4 gap-3">
             <button onClick={() => document.getElementById("proyects")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer font-bold bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600 rounded">Ver proyectos</button>
-            <button className="p-3 cursor-pointer rounded bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">Descargar CV</button>
+            <button className="p-3 cursor-pointer rounded bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">
+            <a
+                href="/CV_Espanol.pdf"
+                 target="_blank"
+                className="p-3  font-bold rounded text-center"
+              >
+                Descargar CV
+              </a></button>
             <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer rounded bg-gradient-to-br from-cyan-600 to-blue-500 ">Contactarme</button>
           </div>
       </div>
