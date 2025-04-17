@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 65, "column": 0}, "map": {"version":3,"sources":["file:///Users/quiqueoso/Portfolio_2.0/src/app/api/proyects/route.ts"],"sourcesContent":["import projectsData from '@/app/api/proyects/proyects.json';\nimport { NextResponse } from 'next/server';\n\n\nexport async function GET() {\n    try {\n        const projects = projectsData.projects;\n\n        return NextResponse.json(projects);\n    } catch (error) {\n        return NextResponse.json(\n            { error: 'Algo salió mal al importar el JSON' },\n            { status: 500 }\n        );\n    }\n}"],"names":[],"mappings":";;;AAAA;AACA;;;AAGO,eAAe;IAClB,IAAI;QACA,MAAM,WAAW,iHAAA,CAAA,UAAY,CAAC,QAAQ;QAEtC,OAAO,+PAAA,CAAA,eAAY,CAAC,IAAI,CAAC;IAC7B,EAAE,OAAO,OAAO;QACZ,OAAO,+PAAA,CAAA,eAAY,CAAC,IAAI,CACpB;YAAE,OAAO;QAAqC,GAC9C;YAAE,QAAQ;QAAI;IAEtB;AACJ","debugId":null}}]
+}

@@ -1,6 +1,7 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import projectsData from '@/app/proyects.json' assert { type: 'json' };
 
 import Image from "next/image";
 import Card from "@/app/card";
@@ -8,6 +9,8 @@ import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaPython } from "react-icons/
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiTypescript, SiExpress, SiFlask, SiMysql, SiSqlite } from "react-icons/si";
 import { IconType } from "react-icons";
+import Modal from "./modal";
+import { Project } from "./types";
 
 interface IconProps {
   Icon: IconType;
@@ -35,6 +38,10 @@ export default function Home() {
   const form = useRef<HTMLFormElement>(null);
   const [sent, setSent] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const [modalProject, setModalProject] = useState<Project | null>(null);
+  const [ShowModal, setShowModal] = useState(false)
+
+  const proyects = projectsData.projects as Project[];
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,6 +71,20 @@ export default function Home() {
   };
 
   
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowModal(false);
+        setModalProject(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setShowModal, setModalProject]);
+
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen  pb-20 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
       <div className="flex min-h-[50dvh] flex-col h-full  items-center justify-center">
@@ -112,8 +133,10 @@ export default function Home() {
         <div id="proyects" className="flex flex-col  w-full min-h-[70dvh] h-full items-center">
         <span className='shadow-[0_0_1000px_50px_rgba(45,45,252,0.6)] -z-50 h-0 w-1/3 mt-[60px]'></span>
           <div className="font-extrabold text-6xl pb-5 text-transparent bg-clip-text bg-gradient-to-br tracking-wide  from-cyan-600 to-blue-500">Portfolio</div>
-          <div className="grid grid-cols-3 p-5 gap-3 h-full w-full justify-center">
-            <Card name={"dd"} imagePath={"WTranscriber"}/>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-3 h-full w-full justify-center">
+          {proyects.map((project, index) => (
+            <Card key={index} project={project} setModal={setModalProject} setShowModal={setShowModal} />
+          ))}
           </div>
         </div>
 
@@ -184,14 +207,18 @@ export default function Home() {
     </div>
 
       </main>
+        {ShowModal && modalProject && (
+          <Modal project={modalProject} setModal={setModalProject} setShowModal={setShowModal} />
+        )}
+
       {toast && (
-  <div
-    className={`fixed top-5 right-5 z-50 px-4 py-3 rounded shadow-lg text-white
-      ${toast.type === "success" ? "bg-green-500" : "bg-red-500"}`}
-  >
-    {toast.message}
-  </div>
-)}
+            <div
+              className={`fixed top-5 right-5 z-50 px-4 py-3 rounded shadow-lg text-white
+                ${toast.type === "success" ? "bg-green-500" : "bg-red-500"}`}
+            >
+              {toast.message}
+            </div>
+          )}
     </div>
   );
   
