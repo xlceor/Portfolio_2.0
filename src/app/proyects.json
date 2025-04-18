@@ -3,25 +3,25 @@
       {
         "name": "GetaPro",
         "imagePath": "/images/getapro.png",
-        "content": "GetaPro es una aplicación profesional para gestionar proyectos de investigación. Surgió como un proyecto escolar, pero evolucionó en un remake elegante de una versión previa... menos funcional, digamos. Permite colaboración en tiempo real, almacenamiento con Supabase, y cuenta con una IA integrada que asiste durante todo el proceso. Usé Next.js y Tailwind para construir una plataforma sólida y moderna.",
+        "content": "GetaPro es una aplicación profesional para gestionar proyectos de investigación. Surgió como un proyecto escolar, pero evolucionó en un remake elegante de una versión previa. Permite colaboración en tiempo real, almacenamiento con Supabase, y cuenta con una IA integrada que asiste durante todo el proceso. Usé Next.js y Tailwind para construir una plataforma sólida y moderna.",
         "technologies": ["Next.js", "Tailwind", "Supabase", "IA"]
       },
       {
         "name": "BeeGreat",
         "imagePath": "/images/beegreat.png",
-        "content": "BeeGreat es una app diseñada para ayudar a estudiantes a prepararse para una competencia local de deletreo en inglés. Fue desarrollada usando Next.js con la intención de probar el tan mencionado 'vibe coding'… pero, como suele pasar, terminé haciendo absolutamente todo yo. Un proyecto educativo con una pizca de resignación y bastante café.",
+        "content": "BeeGreat es una app diseñada para ayudar a estudiantes a prepararse para una competencia local de deletreo en inglés. Fue desarrollada usando Next.js con la intención de probar el 'vibe coding'… pero, como suele pasar, terminé haciendo todo yo. Un proyecto educativo con una pizca de resignación y bastante café.",
         "technologies": ["Next.js", "Tailwind", "Framer Motion", "Speech API"]
       },
       {
         "name": "WTranscriber",
         "imagePath": "/images/wtranscriber.png",
-        "content": "WTranscriber es un pequeño SaaS gratuito que permite transcribir audio y video usando la magia de Whisper, la API de OpenAI. Hecho con React, es útil, funcional y está esperando una futura mejora... como el sueño de todo programador que vive en modo 'beta perpetua'.",
+        "content": "WTranscriber es un pequeño SaaS gratuito que permite transcribir audio y video usando la magia de Whisper, la API de OpenAI. Hecho con React, es útil, funcional y está esperando una futura mejora con NextJS.",
         "technologies": ["React", "Tailwind", "Flask", "Whisper API"]
       },
       {
         "name": "Conia",
         "imagePath": "/images/conia.png",
-        "content": "Conia es una app web para gestionar proyectos escolares, desarrollada en React y Vite. Permite crear equipos, asignar tareas, y consultar una IA que parece saber más del proyecto que los propios miembros. Es como tener un Jarvis en modo académico, pero sin sarcasmo. O al menos, no tanto como yo.",
+        "content": "Conia es una app web para gestionar proyectos escolares, desarrollada en React y Vite. Permite crear equipos, asignar tareas, y consultar una IA que parece saber más del proyecto que los propios miembros.",
         "technologies": ["React", "Vite", "Tailwind", "Firebase", "IA"]
       }
     ]
