@@ -4,6 +4,15 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
+  src: url("../media/gyByhwUxId8gMEwYGFWNOITddY4-s.b7d310ad.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Geist;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
   src: url("../media/gyByhwUxId8gMEwSGFWNOITddY4-s.81df3a5b.woff2") format("woff2");
   unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -13,7 +22,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("../media/gyByhwUxId8gMEwcGFWNOITd-s.p.da1ebef7.woff2") format("woff2");
+  src: url("../media/gyByhwUxId8gMEwcGFWNOITd-s.p.1a6fa3e1.woff2") format("woff2");
   unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -37,6 +46,15 @@
 
 
 /* [next]/internal/font/google/geist_mono_68a01160.module.css [app-client] (css) */
+@font-face {
+  font-family: Geist Mono;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../media/or3nQ6H_1_WfwkMZI_qYFrMdmhHkjkotbA-s.cb6bbcb1.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
 @font-face {
   font-family: Geist Mono;
   font-style: normal;
@@ -190,6 +208,8 @@
     --color-blue-700: oklch(48.8% .243 264.376);
     --color-blue-800: oklch(42.4% .199 265.638);
     --color-blue-900: oklch(37.9% .146 265.522);
+    --color-indigo-800: oklch(39.8% .195 277.366);
+    --color-indigo-950: oklch(25.7% .09 281.288);
     --color-purple-500: oklch(62.7% .265 303.9);
     --color-purple-600: oklch(55.8% .288 302.321);
     --color-rose-700: oklch(51.4% .222 16.935);
@@ -219,6 +239,8 @@
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
     --text-8xl: 6rem;
@@ -459,6 +481,10 @@
     inset: calc(var(--spacing) * 0);
   }
 
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
+
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
@@ -663,28 +689,24 @@
     height: calc(var(--spacing) * 1);
   }
 
-  .h-1\/6 {
-    height: 16.6667%;
-  }
-
-  .h-1\/12 {
-    height: 8.33333%;
-  }
-
   .h-2 {
     height: calc(var(--spacing) * 2);
   }
 
-  .h-2\/6 {
-    height: 33.3333%;
+  .h-3 {
+    height: calc(var(--spacing) * 3);
+  }
+
+  .h-3\/4 {
+    height: 75%;
+  }
+
+  .h-3\/5 {
+    height: 60%;
   }
 
   .h-5 {
     height: calc(var(--spacing) * 5);
-  }
-
-  .h-5\/6 {
-    height: 83.3333%;
   }
 
   .h-10 {
@@ -703,20 +725,8 @@
     height: 23rem;
   }
 
-  .h-\[50dvh\] {
-    height: 50dvh;
-  }
-
   .h-\[70dvh\] {
     height: 70dvh;
-  }
-
-  .h-\[90\] {
-    height: 90px;
-  }
-
-  .h-\[90dvh\] {
-    height: 90dvh;
   }
 
   .h-auto {
@@ -725,10 +735,6 @@
 
   .h-full {
     height: 100%;
-  }
-
-  .max-h-\[90dvh\] {
-    max-height: 90dvh;
   }
 
   .min-h-48 {
@@ -755,10 +761,6 @@
     width: calc(var(--spacing) * 1);
   }
 
-  .w-1\/2 {
-    width: 50%;
-  }
-
   .w-1\/3 {
     width: 33.3333%;
   }
@@ -777,6 +779,10 @@
 
   .w-3\/4 {
     width: 75%;
+  }
+
+  .w-3\/5 {
+    width: 60%;
   }
 
   .w-\[22rem\] {
@@ -940,6 +946,15 @@
     border-width: 1px;
   }
 
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+
+  .border-indigo-800 {
+    border-color: var(--color-indigo-800);
+  }
+
   .border-white {
     border-color: var(--color-white);
   }
@@ -984,16 +999,6 @@
 
   .bg-gray-300 {
     background-color: var(--color-gray-300);
-  }
-
-  .bg-gray-300\/10 {
-    background-color: #d1d5dc1a;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-gray-300\/10 {
-      background-color: color-mix(in oklab, var(--color-gray-300) 10%, transparent);
-    }
   }
 
   .bg-gray-400 {
@@ -1062,16 +1067,6 @@
     background-color: var(--color-white);
   }
 
-  .bg-white\/10 {
-    background-color: #ffffff1a;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-white\/10 {
-      background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
-    }
-  }
-
   .bg-gradient-to-b {
     --tw-gradient-position: to bottom in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
@@ -1104,6 +1099,11 @@
 
   .from-green-400 {
     --tw-gradient-from: var(--color-green-400);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .from-indigo-950 {
+    --tw-gradient-from: var(--color-indigo-950);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -1208,6 +1208,14 @@
     padding: calc(var(--spacing) * 10);
   }
 
+  .p-20 {
+    padding: calc(var(--spacing) * 20);
+  }
+
+  .p-32 {
+    padding: calc(var(--spacing) * 32);
+  }
+
   .p-\[2px\] {
     padding: 2px;
   }
@@ -1271,6 +1279,11 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
 
   .text-6xl {
@@ -1439,16 +1452,6 @@
     --tw-ring-color: var(--color-yellow-300);
   }
 
-  .ring-yellow-300\/30 {
-    --tw-ring-color: #ffe02a4d;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .ring-yellow-300\/30 {
-      --tw-ring-color: color-mix(in oklab, var(--color-yellow-300) 30%, transparent);
-    }
-  }
-
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
@@ -1599,12 +1602,6 @@
   @media (width >= 40rem) {
     .sm\:py-20 {
       padding-block: calc(var(--spacing) * 20);
-    }
-  }
-
-  @media (width >= 48rem) {
-    .md\:h-auto {
-      height: auto;
     }
   }
 
