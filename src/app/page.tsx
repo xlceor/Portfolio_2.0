@@ -60,6 +60,7 @@ export default function Home() {
       if (event.key === "Escape") {
         setShowModal(false);
         setModalProject(null);
+        
       }
     };
 
@@ -73,20 +74,75 @@ export default function Home() {
     <div className="flex flex-col items-center justify-items-center min-h-screen  pb-20 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
       <div className="flex min-h-[50dvh] flex-col h-full  items-center justify-center">
         <span className='shadow-animated  -z-50  h-0 w-full mt-20'></span>
-          <div className="font-extrabold text-8xl text-transparent bg-clip-text bg-animated pb-6">
+          <div className="font-extrabold text-4xl text-transparent bg-clip-text bg-animated ">
             CARLOS OSORIO
           </div>
-          <div className="p-3">
-            Aprendiz de <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600">todo</span> , Maestro en <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">descomponer</span>  cosas... Pero <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-br from-cyan-600 to-blue-500">repararlas</span> 
+          <div className="p-3 font-extrabold text-6xl  w-full flex px-20 justify-center text-center">
+              Full-Stack Developer | Next.js, React, APIs, SaaS
+          </div>
+          <div className="p-6 font-extrabold text-xl ">
+          Construyo aplicaciones modernas, rápidas y escalables para emprendedores y pequeños negocios.
           </div>
           <div className="flex p-4 gap-3">
-            <button onClick={() => document.getElementById("proyects")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer font-bold bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600 rounded">Ver proyectos</button>
-            <button onClick={()=> setShowCV(true)} className="p-3 cursor-pointer rounded bg-gradient-to-br from-orange-600  via-red-500 to-rose-700">
-            Descargar CV</button>
+            <button onClick={() => document.getElementById("proyects")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer font-bold bg-gradient-to-br from-orange-600  via-red-500 to-rose-700 rounded">Ver proyectos</button>
+            <button onClick={()=> window.open("https://www.upwork.com/freelancers/xlceor", "_blank")} className="p-3 cursor-pointer rounded bg-gradient-to-br  from-green-400 via-emerald-600 to-cyan-600 ">
+            Contratame en Upwork</button>
             <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="p-3 cursor-pointer rounded bg-gradient-to-br from-cyan-600 to-blue-500 ">Contactarme</button>
           </div>
       </div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+          <div className="w-full min-h-[70dvh] py-20 flex flex-col items-center bg-gradient-to-b from-gray-900 via-gray-950 to-black text-white">
+      {/* Shadow Glow */}
+      <span className="shadow-[0_0_1000px_50px_rgba(255,0,255,0.4)] z-0 h-0 w-1/3 mt-[40px] absolute"></span>
+
+      {/* Title */}
+      <div className="text-6xl font-extrabold mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 via-pink-500 to-indigo-700">
+        Servicios
+      </div>
+
+      {/* Grid of Services */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl px-6">
+
+        {/* Card */}
+        {[
+          {
+            title: "Aplicaciones Web Full-Stack",
+            desc: "Desarrollo interfaces modernas con Next.js y React, junto con APIs robustas, bases de datos y autenticación.",
+          },
+          {
+            title: "Dashboards y Paneles Admin",
+            desc: "Creación de paneles rápidos, intuitivos y optimizados para manejo de datos, usuarios y flujos internos.",
+          },
+          {
+            title: "APIs y Backends Escalables",
+            desc: "Diseño APIs seguras y eficientes usando Node.js, Express, Supabase o Flask según lo que tu proyecto requiera.",
+          },
+          {
+            title: "Diseño de Interfaces (UI)",
+            desc: "Interfaces limpias, responsivas y modernas diseñadas con Tailwind CSS y React.",
+          },
+          {
+            title: "Integración con Bases de Datos",
+            desc: "MySQL, SQLite o soluciones BaaS como Firebase/Supabase para proyectos rápidos y confiables.",
+          },
+          {
+            title: "Landing Pages Profesionales",
+            desc: "Sitios rápidos, enfocados en conversión y altamente optimizados para negocios y emprendedores.",
+          },
+        ].map((service, i) => (
+          <div
+            key={i}
+            className="p-7 bg-gray-800/40 backdrop-blur-sm border border-white/15 rounded-xl shadow-xl hover:scale-[1.03] transition-transform duration-300"
+          >
+            <div className="text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 via-pink-500 to-indigo-600 text-2xl font-semibold mb-3">
+              {service.title}
+            </div>
+            <p className="text-gray-300 text-sm leading-relaxed">{service.desc}</p>
+          </div>
+        ))}
+
+      </div>
+    </div>
         <div className="flex justify-start min-h-[70dvh] flex-col w-full items-center  bg-gray-500/10 p-10">
         <span className='shadow-[0_0_1000px_50px_rgba(255,0,0,0.5)] -z-50 h-0 w-1/3 mt-[60px]'></span>
           <div className=" font-extrabold text-6xl pb-8 p-0 text-transparent bg-clip-text bg-gradient-to-br from-orange-600 tracking-wide   via-red-500 to-rose-700">Sobre mi</div>
