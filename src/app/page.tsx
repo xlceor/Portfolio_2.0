@@ -59,8 +59,11 @@ export default function Home() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setShowModal(false);
+
+
+
         setModalProject(null);
-        
+
       }
     };
 
@@ -143,6 +146,15 @@ export default function Home() {
 
       </div>
     </div>
+      <div id="proyects" className="flex flex-col  w-full min-h-[70dvh] h-full items-center">
+          <span className='shadow-[0_0_1000px_50px_rgba(45,45,252,0.6)] -z-50 h-0 w-1/3 mt-[60px]'></span>
+            <div className="font-extrabold text-6xl pb-5 text-transparent bg-clip-text bg-gradient-to-br tracking-wide  from-cyan-600 to-blue-500">Portfolio</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-3 h-full w-full justify-center">
+            {proyects.map((project, index) => (
+              <Card key={index} project={project} setModal={setModalProject} setShowModal={setShowModal} />
+            ))}
+          </div>
+        </div>
         <div className="flex justify-start min-h-[70dvh] flex-col w-full items-center  bg-gray-500/10 p-10">
         <span className='shadow-[0_0_1000px_50px_rgba(255,0,0,0.5)] -z-50 h-0 w-1/3 mt-[60px]'></span>
           <div className=" font-extrabold text-6xl pb-8 p-0 text-transparent bg-clip-text bg-gradient-to-br from-orange-600 tracking-wide   via-red-500 to-rose-700">Sobre mi</div>
@@ -169,15 +181,6 @@ export default function Home() {
               Últimamente, he expandido mi mundo al terreno de la electrónica, integrando software y hardware con Arduino y ESP32.
                 </div>
               </div>
-          </div>
-        </div>
-        <div id="proyects" className="flex flex-col  w-full min-h-[70dvh] h-full items-center">
-        <span className='shadow-[0_0_1000px_50px_rgba(45,45,252,0.6)] -z-50 h-0 w-1/3 mt-[60px]'></span>
-          <div className="font-extrabold text-6xl pb-5 text-transparent bg-clip-text bg-gradient-to-br tracking-wide  from-cyan-600 to-blue-500">Portfolio</div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-5 gap-3 h-full w-full justify-center">
-          {proyects.map((project, index) => (
-            <Card key={index} project={project} setModal={setModalProject} setShowModal={setShowModal} />
-          ))}
           </div>
         </div>
 
