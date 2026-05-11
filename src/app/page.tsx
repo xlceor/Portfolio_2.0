@@ -493,6 +493,7 @@ export default function Home() {
                   project={project}
                   setModal={setModalProject}
                   setShowModal={setShowModal}
+                  openDetailsLabel={locale === "es" ? "Abrir detalles" : "Open details"}
                 />
               ))}
             </div>
