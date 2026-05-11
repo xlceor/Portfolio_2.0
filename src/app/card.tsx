@@ -1,50 +1,55 @@
 import Image from "next/image";
+import type { Project } from "./types";
 
-type Project = {
-  name: string;
-  imagePath: string;
-  content: string;
-  technologies: string[];
-};
+const PLACEHOLDER = "/project-placeholder.svg";
 
 type CardProps = {
   project: Project;
   setModal: (project: Project) => void;
   setShowModal: (state: boolean) => void;
+  openDetailsLabel: string;
 };
 
-export default function Card({ project, setModal, setShowModal }: CardProps) {
+export default function Card({
+  project,
+  setModal,
+  setShowModal,
+  openDetailsLabel,
+}: CardProps) {
   const { name, imagePath } = project;
+  const src = imagePath ?? PLACEHOLDER;
+
+  const open = () => {
+    setModal(project);
+    setShowModal(true);
+  };
 
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      aria-label={`Abrir modal del proyecto ${name}`}
-      className="bg-gray-700 rounded-xl relative w-full h-full min-h-48 flex flex-col justify-center items-center"
-      onClick={() => {
-        setModal(project);
-        setShowModal(true);
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          setModal(project);
-          setShowModal(true);
-        }
-      }}
+    <button
+      type="button"
+      aria-label={`${openDetailsLabel} ${name}`}
+      className="group text-left w-full rounded-2xl border border-[color:var(--surface-border)] bg-[color:var(--surface)] overflow-hidden shadow-sm transition-[transform,box-shadow] duration-300 hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)]"
+      onClick={open}
     >
-      <div className="absolute h-full w-full rounded-xl bg-gray-600 hover:-translate-y-16 transition-transform duration-300 ease-in-out overflow-hidden">
+      <div className="relative aspect-[16/11] w-full bg-[color:var(--bg-elevated)]">
         <Image
-          src={imagePath}
-          alt={name}
+          src={src}
+          alt=""
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover rounded-xl"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          unoptimized={src.endsWith(".svg")}
         />
       </div>
-      <div className="flex justify-center items-end p-4 text-2xl font-bold w-full h-full">
-        {name}
+      <div className="px-4 py-4">
+        <span className="block font-medium text-[color:var(--text)] group-hover:text-[color:var(--accent)] transition-colors">
+          {name}
+        </span>
+        <span className="mt-1 block text-sm text-[color:var(--muted)]">
+          {project.content.slice(0, 112)}
+          {project.content.length > 112 ? "…" : ""}
+        </span>
       </div>
-    </div>
+    </button>
   );
 }

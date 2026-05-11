@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500" fill="none">
+  <rect width="400" height="500" rx="24" fill="#e8eeea"/>
+  <circle cx="200" cy="200" r="72" stroke="#059669" stroke-width="2" stroke-opacity="0.45" fill="none"/>
+  <text x="200" y="212" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="52" fill="#15803d" fill-opacity="0.7">CO</text>
+</svg>

@@ -1,22 +1,72 @@
 {
   "projects": [
     {
-      "name": "GetaPro",
-      "imagePath": "/images/getapro.png",
-      "content": "GeTaPro es una plataforma avanzada de gestión de proyectos académicos. Funciona con Supabase para la persistencia, autenticación personalizada con roles, editor tipo Notion para redactar entregables, y un flujo completo estilo SaaS. Diseñado en Next.js y Tailwind, fue creado inicialmente para gestión escolar, pero evolucionó en un sistema robusto capaz de manejar proyectos con múltiples usuarios, retroalimentación y edición modular.",
-      "technologies": ["Next.js", "Tailwind", "Supabase", "Auth", "Full-Stack"]
+      "name": "Khymera Dashboard",
+      "imagePath": null,
+      "content": "A real-time control and telemetry system designed to interact with physical hardware. It acts as the control layer between user intent and robotic systems.",
+      "technologies": ["SSE", "Realtime UI", "Hardware integration", "Voice", "AI-assisted commands"],
+      "keyFeatures": [
+        "Live sensor monitoring (SSE)",
+        "Actuator control (servos, hardware interfaces)",
+        "AI-assisted command execution",
+        "Voice interaction"
+      ],
+      "impact": "Bridges operators and machines with a single, responsive control surface."
     },
     {
-      "name": "BeeGreat",
-      "imagePath": "/images/beegreat.png",
-      "content": "BeeGreat es una herramienta educativa desarrollada para entrenar deletreo en inglés. Usa Next.js y Tailwind, junto con la Speech API para reproducir palabras y pronunciación letra por letra. Obtiene datos desde una API externa y permite navegar entre categorías, estudiar palabras y practicar pronunciación. Fue creado como proyecto personal y terminó siendo una solución útil y pulida para estudiantes.",
-      "technologies": ["Next.js", "Tailwind", "Framer Motion", "Speech API"]
+      "name": "Khymera (Robotic gripper / prosthetic)",
+      "imagePath": null,
+      "content": "A modular robotic platform focused on accessibility and efficient mechanical design — an attempt to build low-cost, functional prosthetic solutions.",
+      "technologies": ["ESP32", "3D printing (PLA + TPU)", "Servo control", "Four-bar linkage"],
+      "keyFeatures": [
+        "3D-printed structure (PLA + TPU)",
+        "Servo-actuated mechanism (four-bar linkage)",
+        "Embedded control (ESP32)"
+      ]
+    },
+    {
+      "name": "Jevil_Tester",
+      "imagePath": null,
+      "content": "AI-powered testing system for IoT applications, combining browser automation with embedded test doubles.",
+      "technologies": ["Playwright", "Passmark / AI", "ESP32", "IoT"],
+      "keyFeatures": [
+        "Creative use of Passmark (AI + Playwright)",
+        "ESP32 fake server with 5 modes"
+      ]
+    },
+    {
+      "name": "GETAPRO",
+      "imagePath": "/images/getapro.png",
+      "content": "A platform for managing research and technical projects with real-time collaboration and AI support — designed to reduce friction in complex academic and engineering workflows.",
+      "technologies": ["Next.js", "Tailwind CSS", "Collaboration", "TipTap / rich editing"],
+      "keyFeatures": [
+        "Role-aware project spaces",
+        "Structured research chapters and editing",
+        "Scalable SaaS-style architecture"
+      ],
+      "impact": "Fewer fragmented tools; clearer workflows for advisors and teams."
     },
     {
       "name": "WTranscriber",
       "imagePath": "/images/wtranscriber.png",
-      "content": "WTranscriber es un SaaS ligero y funcional para transcribir audio usando Whisper de OpenAI. Permite subir archivos, grabar audio directamente desde la app y obtener transcripciones rápidas. Actualmente se encuentra en proceso de migración a Next.js con un diseño más limpio, historial, login y herramientas de corrección con IA para convertirse en un mini SaaS profesional.",
-      "technologies": ["Next.js", "Tailwind", "Whisper API", "AI Tools"]
+      "content": "AI-powered transcription for audio and video, focused on accessibility and fast content processing.",
+      "technologies": ["Next.js", "Tailwind", "Whisper / speech APIs", "TipTap", "Export"],
+      "keyFeatures": [
+        "Fast, in-browser workflows",
+        "Editing and export-friendly output",
+        "Lightweight, responsive UI"
+      ],
+      "impact": "Makes dense audio/video usable as editable text quickly."
+    },
+    {
+      "name": "Custom biomedical & robotics",
+      "imagePath": null,
+      "content": "Concepts and prototypes including exosuit architectures and modular prosthetic systems — exploring how software, control systems, and mechanics integrate into assistive technologies.",
+      "technologies": ["Mechanical design", "Control loops", "Sensing & actuation", "Prototyping"],
+      "keyFeatures": [
+        "Hardware–software co-design",
+        "Iterative prototyping for assistive use cases"
+      ]
     }
   ]
 }

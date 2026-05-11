@@ -1,26 +1,16 @@
-import React from "react";
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 
-interface IconProps {
+export default function GradientSvgIcon({
+  Icon,
+  className = "h-11 w-11",
+}: {
   Icon: IconType;
-}
-
-const GradientSvgIcon: React.FC<IconProps> = ({ Icon }) => (
-  <>
-    <svg width="0" height="0">
-      <linearGradient id="svg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop stopColor="#34d399" offset="0%" />
-        <stop stopColor="#06b6d4" offset="100%" />
-      </linearGradient>
-    </svg>
+  className?: string;
+}) {
+  return (
     <Icon
-      style={{
-        width: "4rem",
-        height: "4rem",
-        fill: "url(#svg-gradient)",
-      }}
+      className={`${className} text-[color:var(--accent)] opacity-[0.92] transition-opacity hover:opacity-100`}
+      aria-hidden
     />
-  </>
-);
-
-export default GradientSvgIcon;
+  );
+}

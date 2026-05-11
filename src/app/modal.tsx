@@ -1,87 +1,134 @@
 import Image from "next/image";
 import { useEffect } from "react";
-import { Project } from "./types";
+import type { Project } from "./types";
 
-type CardProps = {
-    project: Project;
-    setModal: (project: Project) => void;
-    setShowModal: (state: boolean) => void;
-  };
+const PLACEHOLDER = "/project-placeholder.svg";
 
-export default function Modal({ project, setModal, setShowModal }: CardProps) {
+export type ModalCopy = {
+  highlights: string;
+  impact: string;
+  tech: string;
+  close: string;
+};
 
-    function Exit () {
-        setShowModal(false);
-        setModal({ name: "", imagePath: "", content: "", technologies: [] });
-      }
+type ModalProps = {
+  project: Project;
+  setModal: (project: Project) => void;
+  setShowModal: (state: boolean) => void;
+  copy: ModalCopy;
+};
 
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-          if (event.key === "Escape") {
-            Exit()
-          }
-        };
-    
-        document.addEventListener("keydown", handleKeyDown);
-        return () => {
-          document.removeEventListener("keydown", handleKeyDown);
-        };
-      }, [setShowModal, setModal]);
+export default function Modal({
+  project,
+  setModal,
+  setShowModal,
+  copy,
+}: ModalProps) {
+  function exit() {
+    setShowModal(false);
+    setModal({
+      name: "",
+      imagePath: null,
+      content: "",
+      technologies: [],
+    });
+  }
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") exit();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [setShowModal, setModal]);
 
-const { name, imagePath, content, technologies } = project;
+  const { name, imagePath, content, technologies, keyFeatures, impact } =
+    project;
+  const src = imagePath ?? PLACEHOLDER;
 
   return (
-    <div 
-    role="button"
-    tabIndex={0}
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
-    onClick={() => {
-        Exit()
-      }}
+    <div
+      role="presentation"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/25 p-4 backdrop-blur-[2px] dark:bg-black/45"
+      onClick={exit}
     >
       <div
-        className="relative max-w-7xl w-full h-[70dvh]  border border-white/15 rounded-2xl shadow-xl backdrop-blur-md p-6 overflow-y-auto"
+        className="relative max-h-[85dvh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-[color:var(--surface-border)] bg-[color:var(--bg-elevated)] p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
+        aria-labelledby="project-modal-title"
       >
         <button
-          onClick={Exit}
-          className="absolute top-4 right-4 text-white text-xl hover:text-red-500 transition-colors"
-          aria-label="Cerrar modal"
+          type="button"
+          onClick={exit}
+          className="absolute right-4 top-4 rounded-lg px-2 py-1 text-sm text-[color:var(--muted)] hover:bg-[color:var(--surface)] hover:text-[color:var(--text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)]"
         >
-          &times;
+          {copy.close}
         </button>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 h-full">
-          
-          {/* Imagen */}
-          <div className="relative w-full md:w-1/3 h-64 ">
+
+        <div className="flex flex-col gap-6 md:flex-row md:gap-8">
+          <div className="relative mx-auto aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl bg-[color:var(--surface)] md:w-56">
             <Image
-              src={imagePath}
-              alt={name}
+              src={src}
+              alt=""
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover rounded-xl"
+              sizes="224px"
+              className="object-cover"
+              unoptimized={src.endsWith(".svg")}
             />
           </div>
 
-          {/* Contenido */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-2">{name}</h3>
-            <p className="text-white mb-4">{content}</p>
-            <div className="flex flex-wrap gap-2">
-              {technologies.map((tech, i) => (
-                <span
-                  key={i}
-                  className="px-2 py-1 bg-gray-100 text-gray-800 text-sm rounded"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+          <div className="min-w-0 flex-1 text-[color:var(--text)]">
+            <h2 id="project-modal-title" className="text-xl font-semibold pr-12">
+              {name}
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-[color:var(--muted)]">
+              {content}
+            </p>
+
+            {keyFeatures && keyFeatures.length > 0 && (
+              <div className="mt-5">
+                <h3 className="text-sm font-medium text-[color:var(--text)]">
+                  {copy.highlights}
+                </h3>
+                <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-[color:var(--muted)]">
+                  {keyFeatures.map((feature: string, i: number) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {impact && (
+              <div className="mt-5">
+                <h3 className="text-sm font-medium text-[color:var(--text)]">
+                  {copy.impact}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
+                  {impact}
+                </p>
+              </div>
+            )}
+
+            {technologies && technologies.length > 0 && (
+              <div className="mt-5">
+                <h3 className="text-sm font-medium text-[color:var(--text)]">
+                  {copy.tech}
+                </h3>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="rounded-full border border-[color:var(--surface-border)] bg-[color:var(--surface)] px-2.5 py-0.5 text-xs text-[color:var(--text)]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-          
         </div>
       </div>
     </div>
