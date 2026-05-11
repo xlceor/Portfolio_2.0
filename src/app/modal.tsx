@@ -13,7 +13,7 @@ export type ModalCopy = {
 
 type ModalProps = {
   project: Project;
-  setModal: (project: Project) => void;
+  setModal: (project: Project | null) => void;
   setShowModal: (state: boolean) => void;
   copy: ModalCopy;
 };
@@ -26,12 +26,7 @@ export default function Modal({
 }: ModalProps) {
   function exit() {
     setShowModal(false);
-    setModal({
-      name: "",
-      imagePath: null,
-      content: "",
-      technologies: [],
-    });
+    setModal(null);
   }
 
   useEffect(() => {

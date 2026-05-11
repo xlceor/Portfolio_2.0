@@ -74,6 +74,12 @@ Actualmente trabajo en la intersección entre software, sistemas embebidos y rob
     sentButton: "¡Enviado! ✓",
     cv: { es: "CV en Español", en: "CV en Inglés" },
     theme: { dark: "Oscuro", light: "Claro" },
+    modal: {
+      highlights: "Características",
+      impact: "Impacto",
+      tech: "Tecnologías",
+      close: "Cerrar",
+    },
   },
   en: {
     name: "Carlos Osorio",
@@ -130,6 +136,12 @@ I currently work at the intersection of software, embedded systems, and robotics
     sentButton: "Sent! ✓",
     cv: { es: "CV in Spanish", en: "CV in English" },
     theme: { dark: "Dark", light: "Light" },
+    modal: {
+      highlights: "Highlights",
+      impact: "Impact",
+      tech: "Technologies",
+      close: "Close",
+    },
   },
 };
 
@@ -732,6 +744,7 @@ export default function Home() {
             project={modalProject}
             setModal={setModalProject}
             setShowModal={setShowModal}
+            copy={t.modal}
           />
         )}
 
